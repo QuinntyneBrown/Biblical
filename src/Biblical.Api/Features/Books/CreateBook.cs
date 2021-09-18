@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Biblical.Api.Models;
 using Biblical.Api.Core;
 using Biblical.Api.Interfaces;
+using System;
 
 namespace Biblical.Api.Features
 {
@@ -49,17 +50,18 @@ namespace Biblical.Api.Features
 
                     await _context.SaveChangesAsync(cancellationToken);
                 }
-                catch
+                catch(Exception e)
                 {
+                    Console.Write(e.StackTrace);
+
+
                     response = new()
                     {
-
                         Errors = new()
                         {
                             $"Invalid Book Name. {request.Book.Name} is not a valid book of the Bible."
                         }
                     };
-
                 }
                 finally
                 {
