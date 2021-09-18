@@ -10,7 +10,7 @@ namespace Biblical.Api.Models
 
         public Book(string name)
         {
-            if(isValidBookOfTheBible(name) == false)
+            if(_isValidBookOfTheBible(name) == false)
             {
                 throw new Exception("Not a valid book of the bible!");
             }
@@ -18,7 +18,7 @@ namespace Biblical.Api.Models
             Name = name;
         }
 
-        private bool isValidBookOfTheBible(string name)
+        private bool _isValidBookOfTheBible(string name)
         {
             string[] booksOfTheBible = new string[2] {
                 "Genesis",
