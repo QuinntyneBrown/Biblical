@@ -1,0 +1,16 @@
+{
+  "domainNamespace": "Biblical.Api",
+  "applicationNamespace": "Biblical.Api",
+  "infrastructureNamespace": "Biblical.Api",
+  "apiNamespace": "Biblical.Api",
+  "domainDirectory": "C:\\Projects\\Biblical\\src\\Biblical.Api",
+  "applicationDirectory": "C:\\Projects\\Biblical\\src\\Biblical.Api",
+  "infrastructureDirectory": "C:\\Projects\\Biblical\\src\\Biblical.Api",
+  "apiDirectory": "C:\\Projects\\Biblical\\src\\Biblical.Api",
+  "path": "C:\\Projects\\Biblical",
+  "dbContext": "BiblicalDbContext",
+  "sourceFolder": "src",
+  "resources": [
+    "Book"
+  ]
+}
