@@ -9,6 +9,6 @@ namespace Biblical.Api.Interfaces
     {
         DbSet<Book> Books { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

@@ -11,46 +11,46 @@ namespace Biblical.Api.Features
 {
     public class CreateBook
     {
-        public class Validator: AbstractValidator<Request>
+        public class Validator : AbstractValidator<Request>
         {
             public Validator()
             {
                 RuleFor(request => request.Book).NotNull();
                 RuleFor(request => request.Book).SetValidator(new BookValidator());
             }
-        
+
         }
 
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public BookDto Book { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public BookDto Book { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IBiblicalDbContext _context;
-        
+
             public Handler(IBiblicalDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 Response response = default;
 
                 try
-                { 
+                {
                     var book = new Book(request.Book.Name);
 
                     _context.Books.Add(book);
 
                     await _context.SaveChangesAsync(cancellationToken);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.Write(e.StackTrace);
 
@@ -72,7 +72,7 @@ namespace Biblical.Api.Features
             }
 
 
-            
+
         }
     }
 }

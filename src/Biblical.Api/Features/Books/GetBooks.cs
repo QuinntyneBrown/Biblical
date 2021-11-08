@@ -12,27 +12,28 @@ namespace Biblical.Api.Features
 {
     public class GetBooks
     {
-        public class Request: IRequest<Response> { }
+        public class Request : IRequest<Response> { }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public List<BookDto> Books { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly IBiblicalDbContext _context;
-        
+
             public Handler(IBiblicalDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     Books = await _context.Books.Select(x => x.ToDto()).ToListAsync()
                 };
             }
-            
+
         }
     }
 }
